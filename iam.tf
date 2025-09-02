@@ -223,7 +223,7 @@ data "aws_iam_policy_document" "boundary_bsr_kms_provided" {
 # }
 
 data "aws_iam_policy_document" "license" {
-  count = var.boundary_license_secret_arn != null ? 1 : 0
+#  count = var.boundary_license_secret_arn != null ? 1 : 0
 
   statement {
     sid     = "BoundaryLicense"
@@ -236,7 +236,7 @@ data "aws_iam_policy_document" "license" {
 }
 
 data "aws_iam_policy_document" "db" {
-  count = var.boundary_database_password_secret_arn != null ? 1 : 0
+#  count = var.boundary_database_password_secret_arn != null ? 1 : 0
 
   statement {
     sid     = "BoundaryDBPassword"
@@ -249,7 +249,7 @@ data "aws_iam_policy_document" "db" {
 }
 
 data "aws_iam_policy_document" "tls_cert" {
-  count = var.boundary_tls_cert_secret_arn != null ? 1 : 0
+#  count = var.boundary_tls_cert_secret_arn != null ? 1 : 0
 
   statement {
     sid     = "BoundaryTLSCert"
@@ -262,7 +262,7 @@ data "aws_iam_policy_document" "tls_cert" {
 }
 
 data "aws_iam_policy_document" "tls_privkey" {
-  count = var.boundary_tls_privkey_secret_arn != null ? 1 : 0
+#  count = var.boundary_tls_privkey_secret_arn != null ? 1 : 0
   statement {
     sid     = "BoundaryTLSPrivKey"
     effect  = "Allow"
@@ -273,7 +273,7 @@ data "aws_iam_policy_document" "tls_privkey" {
   }
 }
 data "aws_iam_policy_document" "tls_ca" {
-  count = var.boundary_tls_ca_bundle_secret_arn != null ? 1 : 0
+#  count = var.boundary_tls_ca_bundle_secret_arn != null ? 1 : 0
   statement {
     sid     = "BoundaryTLSCABundle"
     effect  = "Allow"
@@ -298,11 +298,11 @@ data "aws_iam_policy_document" "combined" {
     # data.aws_iam_policy_document.boundary_kms.json,
     # var.enable_session_recording == true ? data.aws_iam_policy_document.boundary_bsr_kms[0].json : "",
     var.rds_kms_key_arn != null ? data.aws_iam_policy_document.rds_kms[0].json : "",
-    var.boundary_license_secret_arn != null ? data.aws_iam_policy_document.license[0].json : "",
-    var.boundary_database_password_secret_arn != null ? data.aws_iam_policy_document.db[0].json : "",
-    var.boundary_tls_cert_secret_arn != null ? data.aws_iam_policy_document.tls_cert[0].json : "",
-    var.boundary_tls_privkey_secret_arn != null ? data.aws_iam_policy_document.tls_privkey[0].json : "",
-    var.boundary_tls_ca_bundle_secret_arn != null ? data.aws_iam_policy_document.tls_ca[0].json : "",
+    var.boundary_license_secret_arn != null ? data.aws_iam_policy_document.license.json : "",
+    var.boundary_database_password_secret_arn != null ? data.aws_iam_policy_document.db.json : "",
+    var.boundary_tls_cert_secret_arn != null ? data.aws_iam_policy_document.tls_cert.json : "",
+    var.boundary_tls_privkey_secret_arn != null ? data.aws_iam_policy_document.tls_privkey.json : "",
+    var.boundary_tls_ca_bundle_secret_arn != null ? data.aws_iam_policy_document.tls_ca.json : "",
   ]
 }
 
