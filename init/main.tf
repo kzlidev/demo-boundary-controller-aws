@@ -46,7 +46,7 @@ module "boundary" {
   cidr_allow_ingress_boundary_443  = [var.vpc_cidr, "0.0.0.0/0"]
   cidr_allow_ingress_boundary_9201 = [var.vpc_cidr]
   #  sg_allow_ingress_boundary_9201   = var.sg_allow_ingress_boundary_9201
-  cidr_allow_ingress_ec2_ssh       = [var.vpc_cidr, "3.0.5.32/29"] # Instance Connect IP
+  cidr_allow_ingress_ec2_ssh_rdp       = [var.vpc_cidr, "3.0.5.32/29"] # Instance Connect IP
 
   # DNS (optional)
   create_route53_boundary_dns_record = true

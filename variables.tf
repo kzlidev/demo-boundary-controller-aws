@@ -174,9 +174,9 @@ variable "sg_allow_ingress_boundary_9201" {
   default     = []
 }
 
-variable "cidr_allow_ingress_ec2_ssh" {
+variable "cidr_allow_ingress_ec2_ssh_rdp" {
   type        = list(string)
-  description = "List of CIDR ranges to allow SSH ingress to Boundary EC2 instance (i.e. bastion IP, client/workstation IP, etc.)."
+  description = "List of CIDR ranges to allow SSH/RDP ingress to Boundary EC2 instance (i.e. bastion IP, client/workstation IP, etc.)."
   default     = []
 }
 

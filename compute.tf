@@ -229,13 +229,13 @@ resource "aws_security_group_rule" "ec2_allow_ingress_9203_from_cluster_lb" {
 }
 
 resource "aws_security_group_rule" "ec2_allow_ingress_ssh" {
-  count = length(var.cidr_allow_ingress_ec2_ssh) > 0 ? 1 : 0
+  count = length(var.cidr_allow_ingress_ec2_ssh_rdp) > 0 ? 1 : 0
 
   type        = "ingress"
   from_port   = 22
   to_port     = 22
   protocol    = "tcp"
-  cidr_blocks = var.cidr_allow_ingress_ec2_ssh
+  cidr_blocks = var.cidr_allow_ingress_ec2_ssh_rdp
   description = "Allow TCP/22 (SSH) inbound to Boundary Controller EC2 instances from specified CIDR ranges."
 
   security_group_id = aws_security_group.ec2_allow_ingress.id

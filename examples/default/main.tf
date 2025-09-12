@@ -42,7 +42,7 @@ module "boundary" {
   cidr_allow_ingress_boundary_443  = var.cidr_allow_ingress_boundary_443
   cidr_allow_ingress_boundary_9201 = var.cidr_allow_ingress_boundary_9201
   sg_allow_ingress_boundary_9201   = var.sg_allow_ingress_boundary_9201
-  cidr_allow_ingress_ec2_ssh       = var.cidr_allow_ingress_ec2_ssh
+  cidr_allow_ingress_ec2_ssh_rdp       = var.cidr_allow_ingress_ec2_ssh
 
   # DNS (optional)
   create_route53_boundary_dns_record = var.create_route53_boundary_dns_record
