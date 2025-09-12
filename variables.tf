@@ -318,6 +318,12 @@ variable "ebs_iops" {
 #------------------------------------------------------------------------------
 # RDS Aurora PostgreSQL
 #------------------------------------------------------------------------------
+variable "rds_allocated_storage" {
+  type = number
+  default = 20
+  description = "ALlocated storage for RDS instance"
+}
+
 variable "boundary_database_password_secret_arn" {
   type        = string
   description = "ARN of AWS Secrets Manager secret for the Boundary RDS Aurora (PostgreSQL) database password."
@@ -340,16 +346,22 @@ variable "rds_availability_zones" {
   }
 }
 
+variable "rds_multi_az" {
+  type = bool
+  default = false
+  description = "Multi-AZ for RDS deployment"
+}
+
 variable "rds_deletion_protection" {
   type        = bool
   description = "Boolean to enable deletion protection for RDS global cluster."
   default     = false
 }
 
-variable "rds_aurora_engine_version" {
+variable "rds_engine_version" {
   type        = number
-  description = "Engine version of RDS Aurora PostgreSQL."
-  default     = 16.2
+  description = "Engine version of RDS PostgreSQL."
+  default     = 17.6
 }
 
 variable "rds_force_destroy" {
@@ -370,11 +382,11 @@ variable "rds_global_cluster_id" {
   default     = null
 }
 
-variable "rds_aurora_engine_mode" {
-  type        = string
-  description = "RDS Aurora database engine mode."
-  default     = "provisioned"
-}
+#variable "rds_aurora_engine_mode" {
+#  type        = string
+#  description = "RDS Aurora database engine mode."
+#  default     = "provisioned"
+#}
 
 variable "boundary_database_user" {
   type        = string
@@ -394,17 +406,17 @@ variable "rds_kms_key_arn" {
   default     = null
 }
 
-variable "rds_replication_source_identifier" {
-  type        = string
-  description = "ARN of a source DB cluster or DB instance if this DB cluster is to be created as a Read Replica. Intended to be used by Aurora Replica in Secondary region."
-  default     = null
-}
+#variable "rds_replication_source_identifier" {
+#  type        = string
+#  description = "ARN of a source DB cluster or DB instance if this DB cluster is to be created as a Read Replica. Intended to be used by Aurora Replica in Secondary region."
+#  default     = null
+#}
 
-variable "rds_source_region" {
-  type        = string
-  description = "Source region for RDS cross-region replication. Only required when `is_secondary_region` is `true`."
-  default     = null
-}
+#variable "rds_source_region" {
+#  type        = string
+#  description = "Source region for RDS cross-region replication. Only required when `is_secondary_region` is `true`."
+#  default     = null
+#}
 
 variable "rds_backup_retention_period" {
   type        = number
@@ -445,9 +457,9 @@ variable "rds_skip_final_snapshot" {
   default     = false
 }
 
-variable "rds_aurora_instance_class" {
+variable "rds_instance_class" {
   type        = string
-  description = "Instance class of Aurora PostgreSQL database."
+  description = "Instance class of PostgreSQL database."
   default     = "db.r7g.xlarge"
 }
 
@@ -459,15 +471,15 @@ variable "rds_apply_immediately" {
 
 variable "rds_parameter_group_family" {
   type        = string
-  description = "Family of Aurora PostgreSQL DB Parameter Group."
-  default     = "aurora-postgresql16"
+  description = "Family of PostgreSQL DB Parameter Group."
+  default     = "postgres17"
 }
 
-variable "rds_aurora_replica_count" {
-  type        = number
-  description = "Number of replica (reader) cluster instances to create within the RDS Aurora database cluster (within the same region)."
-  default     = 1
-}
+#variable "rds_aurora_replica_count" {
+#  type        = number
+#  description = "Number of replica (reader) cluster instances to create within the RDS Aurora database cluster (within the same region)."
+#  default     = 1
+#}
 
 #------------------------------------------------------------------------------
 # KMS

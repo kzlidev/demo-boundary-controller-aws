@@ -26,10 +26,10 @@ locals {
     boundary_tls_disable = var.boundary_tls_disable
 
     # Database settings
-    boundary_database_host       = "${aws_rds_cluster.boundary.endpoint}:5432"
-    boundary_database_name       = aws_rds_cluster.boundary.database_name
-    boundary_database_user       = aws_rds_cluster.boundary.master_username
-    boundary_database_password   = aws_rds_cluster.boundary.master_password
+    boundary_database_host       = "${aws_db_instance.postgres.address}:5432"
+    boundary_database_name       = aws_db_instance.postgres.db_name
+    boundary_database_user       = aws_db_instance.postgres.username
+    boundary_database_password   = aws_db_instance.postgres.password
     boundary_database_parameters = var.boundary_database_parameters
 
     # KMS settings

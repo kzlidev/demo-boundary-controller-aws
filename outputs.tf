@@ -22,26 +22,19 @@ output "cluster_lb_dns_name" {
 #------------------------------------------------------------------------------
 # RDS
 #------------------------------------------------------------------------------
-output "aurora_rds_global_cluster_id" {
-  value       = aws_rds_global_cluster.boundary.*.id
-  description = "Aurora Global Database cluster identifier."
+output "rds_arn" {
+  value       = aws_db_instance.postgres.arn
+  description = "ARN of Aurora DB."
 }
 
-output "aurora_rds_cluster_arn" {
-  value       = aws_rds_cluster.boundary.*.arn
-  description = "ARN of Aurora DB cluster."
-  depends_on  = [aws_rds_cluster_instance.boundary]
+output "rds_address" {
+  value       = aws_db_instance.postgres.address
+  description = "Address of RDS DB"
 }
 
-output "aurora_rds_cluster_members" {
-  value       = aws_rds_cluster.boundary.*.cluster_members
-  description = "List of instances that are part of this Aurora DB Cluster."
-  depends_on  = [aws_rds_cluster_instance.boundary]
-}
-
-output "aurora_aws_rds_cluster_endpoint" {
-  value       = aws_rds_cluster.boundary.*.endpoint
-  description = "Aurora DB cluster instance endpoint."
+output "rds_endpoint" {
+  value       = aws_db_instance.postgres.endpoint
+  description = "RDS instance endpoint."
 }
 
 #------------------------------------------------------------------------------

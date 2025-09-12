@@ -33,6 +33,7 @@ module "boundary" {
 
   # Boundary configuration settings
   boundary_fqdn            = var.boundary_fqdn
+  boundary_version         = var.boundary_version
   enable_session_recording = var.enable_session_recording
 
   # Networking
@@ -59,7 +60,7 @@ module "boundary" {
 
   # Database
   rds_skip_final_snapshot   = var.rds_skip_final_snapshot
-  rds_aurora_instance_class = var.rds_aurora_instance_class
+  rds_instance_class = var.rds_aurora_instance_class
 
   # IAM
   ec2_allow_ssm = var.ec2_allow_ssm
