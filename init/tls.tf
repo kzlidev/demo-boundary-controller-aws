@@ -55,7 +55,7 @@ resource "tls_cert_request" "cluster_csr" {
   ]
 
   ip_addresses = [
-    "127.0.0.1", aws_eip.my_public_ip.public_ip,
+    "127.0.0.1"
   ]
 
   subject {
