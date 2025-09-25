@@ -119,32 +119,32 @@ output "public_subnet_3_cidr" {
 }
 
 output "private_subnet_1_id" {
-  value       = aws_subnet.public_subnet_1.id
+  value       = aws_subnet.private_subnet_1.id
   description = "Subnet ID of Private Subnet 1"
 }
 
 output "private_subnet_1_cidr" {
-  value       = aws_subnet.public_subnet_1.cidr_block
+  value       = aws_subnet.private_subnet_1.cidr_block
   description = "CIDR Block of Private Subnet 1"
 }
 
 output "private_subnet_2_id" {
-  value       = aws_subnet.public_subnet_2.id
+  value       = aws_subnet.private_subnet_2.id
   description = "Subnet ID of Private Subnet 2"
 }
 
 output "private_subnet_2_cidr" {
-  value       = aws_subnet.public_subnet_2.cidr_block
+  value       = aws_subnet.private_subnet_2.cidr_block
   description = "CIDR Block of Private Subnet 2"
 }
 
 output "private_subnet_3_id" {
-  value       = aws_subnet.public_subnet_3.id
+  value       = aws_subnet.private_subnet_3.id
   description = "Subnet ID of Private Subnet 3"
 }
 
 output "private_subnet_3_cidr" {
-  value       = aws_subnet.public_subnet_3.cidr_block
+  value       = aws_subnet.private_subnet_3.cidr_block
   description = "CIDR Block of Private Subnet 3"
 }
 
@@ -154,4 +154,8 @@ output "https_target_certificate_path" {
 
 output "https_target_key_path" {
   value = "${path.cwd}/tmp/hashicats_private_key.key"
+}
+
+output "bastion_ssh_aws_key_pair_name" {
+  value = module.boundary.bastion_ssh_aws_key_pair_name
 }

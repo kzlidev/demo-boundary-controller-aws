@@ -97,3 +97,8 @@ output "bsr_s3_bucket_arn" {
   value       = try(aws_s3_bucket.boundary_session_recording[0].arn, null)
   description = "The arn of the S3 bucket for Boundary Session Recording."
 }
+
+output "bastion_ssh_aws_key_pair_name" {
+  value = aws_key_pair.ssh_key_pair.key_name
+  description = "Key pair name for SSH from bastion"
+}
